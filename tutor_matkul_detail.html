@@ -1,0 +1,95 @@
+﻿<!doctype html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tutor Mata Kuliah | SKS</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="site-header">
+    <div class="nav-wrap">
+        <button class="menu-mark" aria-label="Menu"><span></span><span></span><span></span></button>
+        <a class="brand" href="index.html"><span class="brand-badge">SKS</span></a>
+        <nav class="main-nav">
+            <a href="index.html">Beranda</a>
+            <div class="drop">
+                <button class="drop-toggle" type="button">Program</button>
+                <div class="drop-menu">
+                    <a href="tutor.html">Program Bimbingan</a>
+                    <a href="katalog.html">Katalog Note</a>
+                </div>
+            </div>
+            <a href="tentang_kami.html">Tentang Kami</a>
+            <div class="drop">
+                <button class="drop-toggle" type="button">Bantuan</button>
+                <div class="drop-menu">
+                    <a href="bantuan_FAQ.html">FAQ</a>
+                    <a href="bantuan_lokasi.html">Lokasi Belajar</a>
+                    <a href="bantuan_hubungi.html">Hubungi Kami</a>
+                </div>
+            </div>
+        </nav>
+        <div class="nav-actions">
+            <a href="daftar.html">Daftar</a>
+        </div>
+    </div>
+</header>
+<main class="tutor-detail shared-course-page">
+    <section class="shared-course-section course-tutor-section">
+        <p class="course-subject" id="course-name">Mata Kuliah</p>
+        <h1 class="course-page-title">Tutor Mata Kuliah</h1>
+        <div id="course-tutor-list" class="course-tutor-list" aria-label="Daftar tutor" hidden></div>
+        <div id="course-tutor-empty" class="course-tutor-empty" role="status" hidden>
+            <span class="course-avatar" aria-hidden="true"></span>
+            <div>
+                <h2>Tutor belum tersedia</h2>
+                <p>Daftar tutor untuk mata kuliah ini belum tersedia.</p>
+            </div>
+        </div>
+    </section>
+    <section class="shared-course-section course-selection-section" id="course-selection" hidden aria-live="polite">
+        <div class="course-selected-heading">
+            <h2 id="selected-tutor-name"></h2>
+            <span id="selected-tutor-cohort"></span>
+        </div>
+        <article class="course-selected-profile">
+            <span class="course-avatar" aria-hidden="true"></span>
+            <div class="course-selected-facts">
+                <div>
+                    <span class="course-fact-icon" aria-hidden="true">☆</span>
+                    <p><strong>Nilai Mata Kuliah</strong><br><span id="selected-tutor-grade"></span></p>
+                </div>
+                <div>
+                    <span class="course-fact-icon" aria-hidden="true">♧</span>
+                    <p><strong>Prestasi</strong><br><span id="selected-tutor-achievement"></span></p>
+                </div>
+            </div>
+        </article>
+        <section class="course-pricing-section" aria-labelledby="course-pricing-title">
+            <h2 class="course-section-title" id="course-pricing-title">Biaya Bimbingan</h2>
+            <div class="course-pricing-tabs" role="group" aria-label="Pilih tipe bimbingan">
+                <button class="is-active" type="button" data-course-mode="privat" aria-pressed="true">Privat</button>
+                <button type="button" data-course-mode="kelompok" aria-pressed="false">Kelompok</button>
+            </div>
+            <div class="course-pricing-panel">
+                <div class="course-price-list" id="course-price-list"></div>
+            </div>
+        </section>
+    </section>
+</main>
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div><a class="brand footer-brand" href="index.html"><span class="brand-badge">SKS</span></a><p>Solusi akademik dalam satu klik.</p></div>
+            <div><h3>Akses Cepat</h3><p><a href="index.html">Beranda</a></p><p><a href="tutor.html">Program Bimbingan</a></p><p><a href="katalog.html">Katalog Note</a></p></div>
+            <div><h3>Layanan &amp; Bantuan</h3><p><a href="bantuan_FAQ.html">FAQ</a></p><p><a href="bantuan_lokasi.html">Lokasi Belajar</a></p><p><a href="bantuan_hubungi.html">Hubungi Kami</a></p></div>
+            <div><h3>Kontak Kami</h3><p>◎ @satukliksolusi</p><p>✉ satukliksolusi@gmail.com</p></div>
+        </div>
+        <div class="footer-bottom">© 2026 SKS:Satu Klik Solusi - Dibuat Oleh Kelompok 3 (KIDUA). All Right Reserved.</div>
+    </div>
+</footer>
+<script src="js/registration-modal.js"></script>
+<script src="js/tutor-matkul-detail.js"></script>
+</body>
+</html>

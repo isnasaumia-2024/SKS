@@ -13,6 +13,7 @@ const faculty = params.get('fakultas');
 
 const normalizedCourseName = courseName.toLocaleLowerCase('id');
 const isTataNaskahDinas = normalizedCourseName === 'tata naskah dinas';
+const notePreview = window.sksCatalogNotePreviews[normalizedCourseName];
 
 if (isTataNaskahDinas) {
   const canonicalParams = new URLSearchParams({ matkul: 'Tata Naskah Dinas' });
@@ -30,14 +31,26 @@ if (isTataNaskahDinas) {
   backLink.href = 'katalog.html';
   backLink.textContent = '← Kembali ke katalog';
 } else {
-  title.textContent = `Katalog Note ${courseName}`;
+  title.textContent = notePreview ? `Rangkuman ${notePreview.noteTitle}` : `Katalog Note ${courseName}`;
   document.title = `${title.textContent} | SKS`;
-  context.textContent = '';
-  description.textContent = 'Catatan untuk mata kuliah ini belum tersedia.';
-  courseImage.hidden = true;
-  placeholderImage.hidden = false;
-  pricingSection.hidden = true;
-  divider.hidden = true;
+  context.textContent = notePreview
+    ? `Mata kuliah ${notePreview.course} • Sumber: ${notePreview.source}`
+    : '';
+  description.textContent = notePreview
+    ? notePreview.description
+    : 'Catatan untuk mata kuliah ini belum tersedia.';
+  courseImage.hidden = !notePreview;
+  placeholderImage.hidden = Boolean(notePreview);
+  pricingSection.hidden = !notePreview;
+  divider.hidden = !notePreview;
+
+  if (notePreview) {
+    courseImage.src = notePreview.image;
+    courseImage.alt = `${notePreview.noteTitle} — ${notePreview.source}`;
+    const previewButton = pricingSection.querySelector('.preview-button');
+    previewButton.dataset.previewSrc = notePreview.image;
+    previewButton.dataset.previewAlt = `Preview ${notePreview.noteTitle} — ${notePreview.source}`;
+  }
 
   let returnUrl = null;
   if (!program) {
@@ -54,7 +67,7 @@ if (isTataNaskahDinas) {
   }
 
   if (program) {
-    context.textContent = `Program Studi: ${program}`;
+    if (!notePreview) context.textContent = `Program Studi: ${program}`;
     const backParams = new URLSearchParams({ prodi: program });
     if (faculty) backParams.set('fakultas', faculty);
     backLink.href = `katalog_matkul.html?${backParams.toString()}`;
@@ -64,15 +77,15 @@ if (isTataNaskahDinas) {
     if (previousPage === 'katalog_matkul.html'
       && returnUrl.searchParams.has('prodi')
       && returnUrl.searchParams.has('fakultas')) {
-      context.textContent = `Program Studi: ${returnUrl.searchParams.get('prodi')}`;
+      if (!notePreview) context.textContent = `Program Studi: ${returnUrl.searchParams.get('prodi')}`;
       backLink.href = `katalog_matkul.html${returnUrl.search}`;
       backLink.textContent = '← Kembali ke daftar mata kuliah';
     } else if (previousPage === 'katalog.html') {
-      context.textContent = 'Rekomendasi Katalog Note';
+      if (!notePreview) context.textContent = 'Rekomendasi Katalog Note';
       backLink.href = 'katalog.html#recommendation';
       backLink.textContent = '← Kembali ke rekomendasi katalog';
     } else {
-      context.textContent = 'Mata kuliah ini tersedia untuk beberapa program studi.';
+      if (!notePreview) context.textContent = 'Mata kuliah ini tersedia untuk beberapa program studi.';
     }
   }
 }

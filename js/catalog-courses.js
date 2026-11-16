@@ -64,11 +64,13 @@ if (selectedProgram === 'D4 Kearsipan dan Informasi Digital') {
     {
       course: 'Penilaian dan Penyusutan Arsip',
       source: 'Sumber : Fitria Susilowati - 2024',
+      image: 'pratinja_layanan sistem informasi kearsipan.png',
       className: 'note-green'
     },
     {
       course: 'Layanan Sistem Informasi Kearsipan',
       source: 'Sumber : Afrida Tri Arianti - 2024',
+      image: 'pratinjau_pengelolaan arsip statis.png',
       className: 'note-yellow'
     }
   ];

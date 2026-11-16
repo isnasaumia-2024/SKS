@@ -62,13 +62,13 @@ if (selectedProgram === 'D4 Kearsipan dan Informasi Digital') {
       className: 'note-yellow note-review-card'
     },
     {
-      course: 'Akuntansi Pengantar',
-      source: 'Sumber : ........',
+      course: 'Penilaian dan Penyusutan Arsip',
+      source: 'Sumber : Fitria Susilowati - 2024',
       className: 'note-green'
     },
     {
-      course: 'Analisis Bisnis',
-      source: 'Sumber : ........',
+      course: 'Layanan Sistem Informasi Kearsipan',
+      source: 'Sumber : Afrida Tri Arianti - 2024',
       className: 'note-yellow'
     }
   ];

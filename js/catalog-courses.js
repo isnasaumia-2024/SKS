@@ -59,20 +59,15 @@ if (selectedProgram === 'D4 Kearsipan dan Informasi Digital') {
       course: 'Tata Naskah Dinas',
       source: 'Sumber : Isna Saumia - 2024',
       image: 'Review%20TND.jpeg',
+      imageAlt: 'Catatan Tata Naskah Dinas oleh Isna Saumia',
       className: 'note-yellow note-review-card'
     },
-    {
-      course: 'Penilaian dan Penyusutan Arsip',
-      source: 'Sumber : Fitria Susilowati - 2024',
-      image: 'pratinja_layanan sistem informasi kearsipan.png',
-      className: 'note-green'
-    },
-    {
-      course: 'Layanan Sistem Informasi Kearsipan',
-      source: 'Sumber : Afrida Tri Arianti - 2024',
-      image: 'pratinjau_pengelolaan arsip statis.png',
-      className: 'note-yellow'
-    }
+      ...Object.values(window.sksCatalogNotePreviews).map((note, index) => ({
+      ...note,
+      source: `Sumber : ${note.source}`,
+      imageAlt: `${note.noteTitle} — ${note.source}`,
+      className: `note-review-card ${index % 2 ? 'note-yellow' : 'note-green'}`
+    }))
   ];
 
   const featuredCourseNames = new Set(
@@ -82,7 +77,7 @@ if (selectedProgram === 'D4 Kearsipan dan Informasi Digital') {
   const grid = document.createElement('div');
   grid.className = 'note-grid note-grid-three';
 
-  featuredCards.forEach(({ course, source, image, className, programScoped }) => {
+  featuredCards.forEach(({ course, source, image, imageAlt, className }) => {
     const card = document.createElement('a');
     card.className = `note-card ${className}`;
     card.dataset.course = course.toLocaleLowerCase('id');
@@ -95,7 +90,7 @@ if (selectedProgram === 'D4 Kearsipan dan Informasi Digital') {
     if (image) {
       const preview = document.createElement('img');
       preview.src = image;
-      preview.alt = `Catatan ${course} oleh Isna Saumia`;
+      preview.alt = imageAlt;
       artwork.append(preview);
     } else {
       artwork.setAttribute('aria-hidden', 'true');
